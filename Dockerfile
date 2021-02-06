@@ -1,15 +1,15 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 #不写会中文乱码
 ENV LANG C.UTF-8
 
-RUN apt-get update && apt-get install -y openjdk-8-jdk
+RUN apt-get update && apt-get install -y openjdk-14-jdk
 RUN apt-get update && apt-get install -y unzip wget
 
 WORKDIR /runtime
 
 ENV FS_BRANCH=es7-2.7-SNAPSHOT
-ENV FS_ZIP_FILE=fscrawler-es7-2.7-20190708.063133-40.zip
+ENV FS_ZIP_FILE=fscrawler-es7-2.7-20210128.083601-155.zip
 RUN wget https://oss.sonatype.org/content/repositories/snapshots/fr/pilato/elasticsearch/crawler/fscrawler-es7/2.7-SNAPSHOT/$FS_ZIP_FILE
 RUN unzip $FS_ZIP_FILE
 WORKDIR /runtime/fscrawler-$FS_BRANCH
